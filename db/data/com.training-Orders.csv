@@ -1,0 +1,5 @@
+ClientEmail,FirstName,LastName,CreatedOn,Reviewed,Aprroved
+Client1@client.com,Matias,rodriguez,2022-01-13;false,true
+Client2@client.com,Raul,Presli,2022-01-13;false,false
+Client3@client.com,Carlos,Holf,2022-01-13;false,true
+Client4@client.com,Ricardo,Colorado,2022-01-13;true,true

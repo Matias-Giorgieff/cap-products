@@ -1,0 +1,6 @@
+### Get Orders
+GET http://localhost:4004/manage-orders/GetOrders
+### Get Orders
+GET http://localhost:4004/odata/v4/manage-orders/GetOrders
+### Get Orders By ClientEmail
+GET http://localhost:4004/odata/v4/manage-orders/GetOrders('Client1@client.com')
