@@ -47,6 +47,7 @@ context materials {
                                on ToSalesData.Product = $self;
         Reviews          : Association to many ProductReview
                                on Reviews.Product = $self;
+
     }
 
 
@@ -99,6 +100,7 @@ context materials {
     extend Products with {
         PriceCondition     : String(2);
         PriceDetermination : String(3);
+        StockAvailability  : Association to StockAvailability;
     }
 
 }
@@ -172,20 +174,20 @@ context sales {
             Quaintity
         };
 
-    entity SelProducts3 as
-        select from materials.Products
-        left join materials.ProductReview
-            on Products.Name = ProductReview.Name
-        {
-            Rating,
-            Products.Name,
-            sum(Price) as TotalPrice,
-        }
-        group by
-            Rating,
-            Products.Name
-        order by
-            Rating;
+// entity SelProducts3 as
+//     select from materials.Products
+//     left join materials.ProductReview
+//         on Products.Name = ProductReview.Name
+//     {
+//         Rating,
+//         Products.Name,
+//         sum(Price) as TotalPrice,
+//     }
+//     group by
+//         Rating,
+//         Products.Name
+//     order by
+//         Rating;
 
 }
 

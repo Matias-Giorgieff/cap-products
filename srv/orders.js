@@ -6,6 +6,14 @@ const { Orders } = cds.entities("com.training");
 
 
 module.exports = (srv) => {
+
+    srv.before('*', (req) => {
+        console.log('Before All:');
+        console.log(`Method: ${req.method}`);
+        console.log(`Target: ${req.target}`);
+    });
+
+
     //****************Read****************//
     srv.on("READ", "Orders", async (req) => {
 
@@ -23,7 +31,7 @@ module.exports = (srv) => {
     });
 
 
-    //****************Create****************//
+    //****************CREATE****************//
     //POST
     srv.on("CREATE", "Orders", async (req) => {
 
@@ -58,13 +66,15 @@ module.exports = (srv) => {
 
     // Se ejecuta justo antes de la creacion
     srv.before("CREATE", "Orders", (req) => {
+        console.log('Before Create Orders');
         req.data.CreatedOn = new Date().toISOString().slice(0, 10);
         return req;
     });
 
-    //****************Updae****************//
+    //****************UPDATE****************//
     //PUT
     srv.on("Update", "Orders", async (req) => {
+        
         let returnData = await cds.transaction(req).run(
             [
                 UPDATE(Orders, req.ClientEmail).set({
@@ -84,10 +94,11 @@ module.exports = (srv) => {
             console.log(err);
             req.error(err.code, err.message);
         });
+        
         console.log("Before End", returnData);
         return returnData;
     });
-    //****************Delete****************//
+    //****************DELETEc****************//
     srv.on("DELETE", "Orders", async (req) => {
         let returnData = await cds.transaction(req).run(
             DELETE.from(Orders).where({
@@ -115,7 +126,7 @@ module.exports = (srv) => {
         //destructure
         const { ClientEmail } = req.data;
         const db = srv.transaction(req);
-        console.log('bien');
+
         const result = await db
             .read(Orders)
             .where({ ClientEmail: ClientEmail });
@@ -124,7 +135,6 @@ module.exports = (srv) => {
 
         switch (result[0].Country_code) {
             case 'ES':
-                console.log("seeee");
                 return 21.5;
             case 'UK':
                 return 24.7;
@@ -133,4 +143,40 @@ module.exports = (srv) => {
         }
 
     });
+    //****************ACTIONS****************//
+    //A diferencia de las funciones, las acciones aplican un efecto secundario a nivel de la capa de persistencia usa el metodo POST
+    //Pueden ser botones en FioriElements
+    srv.on("cancelOrder", async (req) => {
+        const { clientEmail } = req.data;
+        const db = srv.transaction(req);
+
+        const resultRead = await db
+            .read(Orders, ["FirstName", "LastName", "Aprroved"])
+            .where({ ClientEmail: clientEmail });
+
+        let returnOrder = {
+            status: "",
+            message: ""
+        };
+
+        console.log(clientEmail);
+        console.log(resultRead);
+
+        if (resultRead[0].Aprroved == false) {
+            //Efecto secundario // Post
+            const resultsUpdate = await db
+                .update(Orders)
+                .set({ Status: 'C' })
+                .where({ ClientEmail: clientEmail });
+
+            returnOrder.status = 'Succeded';
+            returnOrder.message = `The Order placed by ${resultRead[0].FirstName} ${resultRead[0].LastName} was canceled`;
+        } else {
+            returnOrder.status = 'Failed';
+            returnOrder.message = `The Order placed by ${resultRead[0].FirstName} ${resultRead[0].LastName} was not cancel because alredy aprroved`;
+        };
+        console.log('Action cancelOrder executed');
+        return returnOrder;
+    });
+    //Se ejecuta siempre
 }

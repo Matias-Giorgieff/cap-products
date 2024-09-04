@@ -1,24 +1,24 @@
 using {com.logali as logali} from '../db/schema';
 using {com.training as training} from '../db/training';
 
-service CatalogService_1 {
-    entity Products                      as projection on logali.materials.Products;
-    entity Suppliers                     as projection on logali.sales.Suppliers;
-    entity UnitOfMeasures                as projection on logali.materials.UnitOfMeasures;
-    entity Currency                      as projection on logali.materials.Currencies;
-    entity UnitOfMeDimensionsUnitsasures as projection on logali.materials.DimensionsUnits;
-    entity Category                      as projection on logali.materials.Categories;
-    entity ToSalesData                   as projection on logali.sales.SalesData;
-    entity Reviews                       as projection on logali.materials.ProductReview;
-    entity Months                        as projection on logali.sales.Months;
-    entity Order                         as projection on logali.sales.Orders;
-    entity OrderItem                     as projection on logali.sales.OrderItems;
-    entity SelProducts3                  as projection on logali.sales.SelProducts3;
-    //////////Otras entidades:
-    entity Course                        as projection on training.Course;
-    entity Student                       as projection on training.Student;
-    entity StudentCourse                 as projection on training.StudentCourse;
-}
+// service CatalogService_1 {
+//     entity Products                      as projection on logali.materials.Products;
+//     entity Suppliers                     as projection on logali.sales.Suppliers;
+//     entity UnitOfMeasures                as projection on logali.materials.UnitOfMeasures;
+//     entity Currency                      as projection on logali.materials.Currencies;
+//     entity UnitOfMeDimensionsUnitsasures as projection on logali.materials.DimensionsUnits;
+//     entity Category                      as projection on logali.materials.Categories;
+//     entity ToSalesData                   as projection on logali.sales.SalesData;
+//     entity Reviews                       as projection on logali.materials.ProductReview;
+//     entity Months                        as projection on logali.sales.Months;
+//     entity Order                         as projection on logali.sales.Orders;
+//     entity OrderItem                     as projection on logali.sales.OrderItems;
+//     // entity SelProducts3                  as projection on logali.sales.SelProducts3;
+//     //////////Otras entidades:
+//     entity Course                        as projection on training.Course;
+//     entity Student                       as projection on training.Student;
+//     entity StudentCourse                 as projection on training.StudentCourse;
+// }
 
 define service CatalogService {
     entity Products          as

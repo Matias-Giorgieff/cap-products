@@ -1,4 +1,4 @@
 ID,Description
-1,StockAvailability1
-2,StockAvailability2
-3,StockAvailability3
+1,In Stock
+2,Out of Stock
+3,Limited Stock

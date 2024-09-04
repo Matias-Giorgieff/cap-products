@@ -1,6 +1,6 @@
-Name,Description,ImageUrl,ReleaseDate,DiscontinuedDate,Price,Height,Width,Depth,Quaintity,Supplier_ID,UnitOfMeasure_ID
-Producto1,prod1,img.jpg,,,11.1,3.30,3.30,3.30,3.30,89700202-7788-4c98-86ac-4768d70dd126,01
-Producto2,prod2,img.jpg,,,10.5,3.30,3.30,3.30,3.30,89700202-7788-4c98-86ac-4768d70dd126,02
-Producto3,prod3,img.jpg,,,10.0,3.30,3.30,3.30,3.30,89700202-7788-4c98-86ac-4768d70dd127,03
-Producto4,prod4,img.jpg,,,10.0,3.30,3.30,3.30,3.30,89700202-7788-4c98-86ac-4768d70dd128,03
-Producto5,prod5,img.jpg,,,10.0,3.30,3.30,3.30,3.30,89700202-7788-4c98-86ac-4768d70dd129,03
+Name,Description,ImageUrl,ReleaseDate,DiscontinuedDate,Price,Height,Width,Depth,Quaintity,Supplier_ID,UnitOfMeasure_ID,Currency_ID,DimensionsUnits_ID,Category_ID,PriceCondition,PriceDetermination,StockAvailability_ID
+Producto1,prod1,img.jpg,,,11.1,3.30,3.30,3.30,3.30,89700202-7788-4c98-86ac-4768d70dd126,01,USD,,B,,,1
+Producto2,prod2,img.jpg,,,10.5,3.30,3.30,3.30,3.30,89700202-7788-4c98-86ac-4768d70dd126,02,USD,,B,,,1
+Producto3,prod3,img.jpg,,,10.0,3.30,3.30,3.30,3.30,89700202-7788-4c98-86ac-4768d70dd127,03,ARG,,F,,,2
+Producto4,prod4,img.jpg,,,10.0,3.30,3.30,3.30,3.30,89700202-7788-4c98-86ac-4768d70dd128,03,ARG,,E,,,2
+Producto5,prod5,img.jpg,,,10.0,3.30,3.30,3.30,3.30,89700202-7788-4c98-86ac-4768d70dd129,03,ARG,,E,,,3

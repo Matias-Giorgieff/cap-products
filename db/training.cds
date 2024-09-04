@@ -101,5 +101,5 @@ entity Orders {
         Reviewed    : Boolean;
         Aprroved    : Boolean;
         Country     : Country;
-
+        Status      : String(1);
 }

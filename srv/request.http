@@ -26,4 +26,46 @@ Content-Type: application/json
 DELETE http://localhost:4004/odata/v4/manage-orders/Orders('Client5@client.com')
 ### Get Customer Rate - Function
 GET http://localhost:4004/odata/v4/manage-orders/getClientTaxRate(ClientEmail = 'Client1@client.com')
+### Cancel Order - Action (Este indicara Failed porque la orden ta fue aprobada)
+POST http://localhost:4004/odata/v4/manage-orders/cancelOrder
+Content-Type: application/json
+
+{
+    "clientEmail" : "Client1@client.com"
+}
+### Cancel Order - Action (Este indicara Failed porque la orden ta fue aprobada y la deja 
+### el registro con Status = C (Cancelado) )
+POST http://localhost:4004/odata/v4/manage-orders/cancelOrder
+Content-Type: application/json
+
+{
+    "clientEmail" : "Client2@client.com"
+}
+
+
+###
+### Function & Action vinculadas
+###
+### Get Customer Rate - Function bound
+GET http://localhost:4004/odata/v4/manage-orders/Orders('Client1@client.com')/ManageOrders.getClientTaxRate(ClientEmail = 'Client1@client.com')
+### Cancel Order - Action  bound (Este indicara Failed porque la orden ta fue aprobada)
+POST http://localhost:4004/odata/v4/manage-orders/Orders('Client1@client.com')/ManageOrders.cancelOrder
+Content-Type: application/json
+
+{
+    "clientEmail" : "Client1@client.com"
+}
+### Cancel Order - Action bound (Este indicara Failed porque la orden ta fue aprobada y la deja 
+### el registro con Status = C (Cancelado) )
+POST http://localhost:4004/odata/v4/manage-orders/Orders('Client2@client.com')/ManageOrders.cancelOrder
+Content-Type: application/json
+
+{
+    "clientEmail" : "Client2@client.com"
+}
+
+
+
+### Get Incidents (Servicio Odata externo)
+GET http://localhost:4004/odata/v4/sapbackend-exit/Incidents
 
