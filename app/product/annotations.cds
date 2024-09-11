@@ -1,8 +1,8 @@
 using CatalogService as service from '../../srv/catalog-service';
 
 
-// annotate service.Products with @odata.draft.enabled;
-// annotate service.Products with @odata.draft.bypass;
+annotate service.Products with @odata.draft.enabled;
+annotate service.Products with @odata.draft.bypass;
 
 annotate service.Products with @(
     Capabilities                 : {
@@ -24,8 +24,8 @@ annotate service.Products with @(
 
 
     UI.HeaderInfo                : {
-        TypeName      : '{i18n>Product}',
-        TypeNamePlural: '{i18n>Products}',
+        TypeName      : '{@i18n>Product}',
+        TypeNamePlural: '{@i18n>Products}',
         ImageUrl      : ImageUrl,
         Title         : {Value: Name},
         Description   : {Value: Description}
@@ -274,7 +274,7 @@ annotate service.Products with {
                 ]
             },
         },
-        title : '{i18n>CategoryIdd}',
+        title : '{@i18n>CategoryIdd}',
     );
     //Currency
     //ToCurrency
@@ -452,9 +452,10 @@ annotate service.Supplier with @(Communication: {Contact: {
 
 annotate service.Products with {
     //CategoryId          @title: '{i18n>CategoryIdd}';
-    StockAvailabilityId @title: '{i18n>StockAvailabilityId}';
-    UnitOfMeasureId     @title: '{i18n>UnitOfMeasureId}';
-    DimensionsUnitsId   @title: '{i18n>DimensionsUnitsId}';
+    CurrencyId          @title: '{@i18n>CurrencyId}';
+    StockAvailabilityId @title: '{@i18n>StockAvailabilityId}';
+    UnitOfMeasureId     @title: '{@i18n>UnitOfMeasureId}';
+    DimensionsUnitsId   @title: '{@i18n>DimensionsUnitsId}';
 };
 
 annotate service.Products with {
