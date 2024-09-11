@@ -21,6 +21,30 @@ using {com.training as training} from '../db/training';
 // }
 
 define service CatalogService {
+    // entity Products          as
+    //     select from logali.materials.Products {
+    //         // ID,
+    //         // Name            as ProductName     @mandatory,
+    //         // Description                        @mandatory,
+    //         // ImageUrl,
+    //         // ReleaseDate,
+    //         // DiscontinuedDate,
+    //         // Price                              @mandatory,
+    //         // Height,
+    //         // Width,
+    //         // Depth,
+
+    //         *, //Selector inteligente, solo considera todos los datos que estan antes de la columna quantity
+    //         Quaintity,
+    //         UnitOfMeasure   as ToUnitOfMeasure @mandatory,
+    //         Currency        as ToCurrency      @mandatory,
+    //         Category        as ToCategory      @mandatory,
+    //         Category.Name   as Category        @readonly,
+    //         DimensionsUnits as ToDimensionUnit,
+    //         ToSalesData,
+    //         Supplier,
+    //     };
+
     entity Products          as
         select from logali.materials.Products {
             // ID,
@@ -37,13 +61,17 @@ define service CatalogService {
             *, //Selector inteligente, solo considera todos los datos que estan antes de la columna quantity
             Quaintity,
             UnitOfMeasure   as ToUnitOfMeasure @mandatory,
+            UnitOfMeasure.ID as UnitOfMeasureId,
             Currency        as ToCurrency      @mandatory,
+            Currency.ID as CurrencyId,
             Category        as ToCategory      @mandatory,
+            Category.ID        as CategoryId,
             Category.Name   as Category        @readonly,
             DimensionsUnits as ToDimensionUnit,
+            DimensionsUnits.ID as DimensionsUnitsId,
             ToSalesData,
             Supplier,
-            Reviews,
+            StockAvailability.ID as StockAvailabilityId,
         };
 
     @readonly //Esto hace que la llamada al HTTP solo sea READONLY(GET)

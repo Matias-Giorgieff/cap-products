@@ -47,6 +47,7 @@ context materials {
                                on ToSalesData.Product = $self;
         Reviews          : Association to many ProductReview
                                on Reviews.Product = $self;
+        Rating : Decimal(16, 2);
 
     }
 
@@ -207,6 +208,7 @@ context reports {
         mixin {
             ToStockAvailability : Association to logali.materials.StockAvailability
                                       on ToStockAvailability.ID = $projection.StockAvailability;
+
             ToAvarageRating     : Association to AvarageRating
                                       on ToAvarageRating.ProductId = ID;
         }
